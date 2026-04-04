@@ -1,0 +1,12 @@
+name: TopIS
+version: 2.0
+api: [3.0.0-ALPHA6]
+author: kuraLLsz
+#Edit: Ghast Noob
+main: kuraLLsz\Main
+
+commands:
+  is:
+    description: Xem Thông Tin Is
+  topis:
+    description: Xem Top Is
