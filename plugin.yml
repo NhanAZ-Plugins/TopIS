@@ -1,12 +1,19 @@
 name: TopIS
-version: 2.0
-api: [3.0.0-ALPHA6]
-author: kuraLLsz
-#Edit: Ghast Noob
+version: 3.0.0
+api: 5.0.0
+author: [kuraLLsz, Ghast Noob]
 main: kuraLLsz\Main
+softdepend: [PureChat]
 
 commands:
   is:
-    description: Xem Thông Tin Is
+    description: Xem thông tin tiến trình đảo
+    permission: topis.command.is
   topis:
-    description: Xem Top Is
+    description: Xem bảng xếp hạng đảo
+    permission: topis.command.topis
+permissions:
+  topis.command.is:
+    default: true
+  topis.command.topis:
+    default: true
