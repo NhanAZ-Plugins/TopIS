@@ -1,6 +1,14 @@
 # TopIS
 
-TopIS tracks island levels from placed blocks, displays a player's level and experience, and provides a paginated island-level ranking.
+Island progression and leaderboard plugin for Axolotl-PM API 5; optional PureChat integration is unverified.
+
+[![CI](https://github.com/NhanAZ-Plugins/TopIS/actions/workflows/build.yml/badge.svg)](https://github.com/NhanAZ-Plugins/TopIS/actions/workflows/build.yml)
+[![Latest release](https://img.shields.io/github/v/release/NhanAZ-Plugins/TopIS)](https://github.com/NhanAZ-Plugins/TopIS/releases/latest)
+[![Discord](https://img.shields.io/discord/986553214889517088?label=Discord&logo=discord&logoColor=white&color=5865F2)](https://discord.gg/j2X83ujT6c)
+
+## Overview
+
+This plugin targets the PocketMine-MP and Axolotl-PM API 5 ecosystem and is maintained under [NhanAZ-Plugins](https://github.com/NhanAZ-Plugins).
 
 ## Compatibility
 
