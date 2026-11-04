@@ -1,7 +1,7 @@
 name: TopIS
 version: 3.0.0
 api: 5.0.0
-author: [kuraLLsz, Ghast Noob]
+authors: ["NhanAZ", "kuraLLsz"]
 main: kuraLLsz\Main
 softdepend: [PureChat]
 
