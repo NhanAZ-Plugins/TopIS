@@ -26,4 +26,9 @@ TopIS continues to use its historical `Exp.yml`, `Seviyeler.yml`, and `SeviyeAtl
 
 GitHub Actions uses [DevTools](https://github.com/NhanAZ/DevTools) to run PHPStan at maximum level, build the plugin PHAR and validate its contents. Workflow dependencies and the server artifact are pinned to exact revisions or checksums for reproducibility.
 
-The original manifest credits `kuraLLsz` and Ghast Noob. No `LICENSE` file is present; no general source reuse license is granted.
+The original manifest credits `kuraLLsz` and NhanAZ. No `LICENSE` file is present; no general source reuse license is granted.
+
+
+## Credits
+
+Authors: NhanAZ, kuraLLsz.
