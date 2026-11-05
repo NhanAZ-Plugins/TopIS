@@ -31,13 +31,13 @@ final class Main extends PluginBase implements Listener{
 		$this->experienceConfig = new Config($dataFolder . "Exp.yml", Config::YAML);
 		$this->levelConfig = new Config($dataFolder . "Seviyeler.yml", Config::YAML);
 		$this->messagesConfig = new Config($dataFolder . "AdaLevel.yml", Config::YAML, [
-			"komut-baslik" => "§f•§aThông Tin Đảo Của Bạn:",
-			"ToplevelBaslik" => "§f•§aXếp Hạng Cấp Độ Đảo §f[§a",
-			"Seviyen" => "§f•§aCấp Độ Hiện Tại:§f",
-			"MevcutXp" => "§f•§aKinh Nghiệm Hiện Tại:§f",
-			"seviyeatla" => "§f•§aChúc Mừng Bạn Đã Lên Cấp Độ Đảo",
-			"seviyeatla2" => "§f•§aCấp Độ Đảo Hiện Tại:§f ",
-			"seviyeatla3" => "§f•§aKinh Nghiệm Hiện Tại:§f "
+			"komut-baslik" => "Your island:",
+			"ToplevelBaslik" => "Island level leaderboard [",
+			"Seviyen" => "Current level:",
+			"MevcutXp" => "Current experience:",
+			"seviyeatla" => "Your island reached a new level.",
+			"seviyeatla2" => "Current island level: ",
+			"seviyeatla3" => "Current experience: "
 		]);
 
 		$this->pureChat = $this->getServer()->getPluginManager()->getPlugin("PureChat");
@@ -74,9 +74,9 @@ final class Main extends PluginBase implements Listener{
 		if($progress["leveledUp"]){
 			$this->applyPureChatPrefix($player);
 			$player->sendTitle(
-				$this->getMessage("seviyeatla", "§aĐảo của bạn đã lên cấp!"),
-				$this->getMessage("seviyeatla2", "§aCấp độ hiện tại: ") . $progress["level"] . "\n" .
-				$this->getMessage("seviyeatla3", "§aKinh nghiệm hiện tại: ") . $progress["experience"]
+				$this->getMessage("seviyeatla", "Your island reached a new level."),
+				$this->getMessage("seviyeatla2", "Current island level: ") . $progress["level"] . "\n" .
+				$this->getMessage("seviyeatla3", "Current experience: ") . $progress["experience"]
 			);
 			$this->savePlayerData();
 		}
@@ -86,20 +86,20 @@ final class Main extends PluginBase implements Listener{
 		$commandName = strtolower($command->getName());
 		if($commandName === "is"){
 			if(!$sender instanceof Player){
-				$sender->sendMessage("Chỉ người chơi đang online mới có thể xem thông tin đảo.");
+				$sender->sendMessage("Only players can view island information.");
 				return true;
 			}
 
 			if(!isset($args[0]) || strtolower($args[0]) !== "info"){
-				$sender->sendMessage("§f•§aDùng /is info để xem thông tin đảo.");
+				$sender->sendMessage("Usage: /is info");
 				return true;
 			}
 
 			$this->initializePlayer($sender);
 			$name = $sender->getName();
-			$sender->sendMessage($this->getMessage("komut-baslik", "Thông Tin Đảo Của Bạn:"));
-			$sender->sendMessage($this->getMessage("Seviyen", "Cấp Độ Hiện Tại:") . " §f" . $this->getStoredInteger($this->levelConfig, $name, 1, 1));
-			$sender->sendMessage($this->getMessage("MevcutXp", "Kinh Nghiệm Hiện Tại:") . " §f" . $this->getStoredInteger($this->experienceConfig, $name, 1, 0));
+			$sender->sendMessage($this->getMessage("komut-baslik", "Your island:"));
+			$sender->sendMessage($this->getMessage("Seviyen", "Current level: ") . $this->getStoredInteger($this->levelConfig, $name, 1, 1));
+			$sender->sendMessage($this->getMessage("MevcutXp", "Current experience: ") . $this->getStoredInteger($this->experienceConfig, $name, 1, 0));
 			return true;
 		}
 
@@ -107,11 +107,11 @@ final class Main extends PluginBase implements Listener{
 			$page = isset($args[0]) && ctype_digit($args[0]) ? (int) $args[0] : 1;
 			$totalPages = Ranking::getTotalPages($this->getLevels());
 			$page = min(max(1, $page), $totalPages);
-			$sender->sendMessage($this->getMessage("ToplevelBaslik", "Xếp Hạng Cấp Độ Đảo [") . $page . "§f/§a" . $totalPages . "§f]");
+			$sender->sendMessage($this->getMessage("ToplevelBaslik", "Island level leaderboard [") . $page . "/" . $totalPages . "]");
 
 			$rank = ($page - 1) * Ranking::PAGE_SIZE + 1;
 			foreach(Ranking::getPage($this->getLevels(), $page) as $name => $level){
-				$sender->sendMessage("§f[§a" . $rank . "§f] §a" . $name . " §f: §a" . $level);
+				$sender->sendMessage("[" . $rank . "] " . $name . ": " . $level);
 				$rank++;
 			}
 			return true;

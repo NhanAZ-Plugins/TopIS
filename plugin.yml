@@ -7,10 +7,10 @@ softdepend: [PureChat]
 
 commands:
   is:
-    description: Xem thông tin tiến trình đảo
+    description: View your island progress
     permission: topis.command.is
   topis:
-    description: Xem bảng xếp hạng đảo
+    description: View the island leaderboard
     permission: topis.command.topis
 permissions:
   topis.command.is:
